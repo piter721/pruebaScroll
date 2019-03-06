@@ -161,7 +161,7 @@ public class ApplicationLauncherAndroid {
 		capabilities.setCapability("newCommandTimeout", 1800); //30min
 		capabilities.setCapability("noReset", false);
 		capabilities.setCapability("autoGrantPermissions", true);
-		capabilities.setCapability("skipServerInstallation", true);
+		capabilities.setCapability("skipServerInstallation", false);
 
 		return capabilities;
 	}

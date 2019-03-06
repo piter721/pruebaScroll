@@ -10,19 +10,9 @@ public class Appium {
 	
 	public static void iniciarAppiumServer(int port){
 		properties = new PropertiesInit();
-		String rutaJs = null;
-			if (System.getProperty("os.name").contains("Windows"))
-				rutaJs = properties.RUTAWINDOWS;
-			else if (System.getProperty("os.name").contains("Linux"))
-				rutaJs = properties.RUTALINUX;
-			else if (System.getProperty("os.name").contains("Mac"))
-				rutaJs = properties.RUTAMAC;
-			
-			server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
-					.withAppiumJS(new File(rutaJs))
-					.usingPort(port));
-				server.start();
-				System.out.println("servidor appium iniciado");
+			server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder());
+			server.start();
+		System.out.println("servidor appium iniciado");
     }
 	
 	public static void detenerAppium() {
