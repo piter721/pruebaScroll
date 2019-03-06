@@ -22,12 +22,9 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import qa.automated.web.bci.Config.Appium;
-import qa.automated.web.bci.Pages.PageLoginUFTAppium;
-import qa.automated.web.bci.Pages.PagePagoDeCuentasUFTAppium;
+import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
 import qa.automated.web.bci.Properties.PropertiesInit;
 import qa.automated.web.bci.Properties.ParamsInit;
-import qa.automated.web.bci.Runnings.RunningLoginUFTAppium;
-import qa.automated.web.bci.Runnings.RunningPagoDeCuentasUFTAppium;
 
 
 //@SuiteClasses({ RunningLoginUFTAppium.class, RunningPagoDeCuentasUFTAppium.class})
@@ -40,15 +37,14 @@ public class ApplicationLauncherAndroid {
 	public static final String CUR_DIR = System.getProperty("user.dir");
 
 	// Pagina Mobile
-	public static PageLoginUFTAppium pageLoginUFTAppium;
-	public static PagePagoDeCuentasUFTAppium pagePagoDeCuentasUFTAppium;
+	public static PageCarroCompraAliexpress carroCompraAliexpress;
 
 	@BeforeClass
 	public static void setUp() throws MalformedURLException {
 		System.out.println(System.getProperty("os.name"));
 		properties = new PropertiesInit();
-		//Appium.detenerAppium();
-		//Appium.iniciarAppiumServer();
+		Appium.detenerAppium();
+		Appium.iniciarAppiumServer();
 
 		try {
 			if (System.getenv("SELENIUM_SERVER_URL") != null
@@ -64,8 +60,7 @@ public class ApplicationLauncherAndroid {
 			driver.manage().timeouts().implicitlyWait(13, TimeUnit.SECONDS);
 
 			// Pages Mobile
-			pageLoginUFTAppium = PageFactory.initElements(driver, PageLoginUFTAppium.class);
-			pagePagoDeCuentasUFTAppium = PageFactory.initElements(driver, PagePagoDeCuentasUFTAppium.class);
+			carroCompraAliexpress = PageFactory.initElements(driver, PageCarroCompraAliexpress.class);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,7 +74,7 @@ public class ApplicationLauncherAndroid {
 		System.out.println("************************************************");
 		System.out.println();
 		driver.quit();
-		//Appium.detenerAppium();
+		Appium.detenerAppium();
 	}
 
 	public static void setDriver() throws MalformedURLException {
@@ -121,28 +116,28 @@ public class ApplicationLauncherAndroid {
 	public static DesiredCapabilities capabilities() {	
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-		File rootPath = new File(System.getProperty("user.dir"));
-		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
-		File app = new File(appDir, "app-qa (1).apk");
-		capabilities.setCapability("app", app.getAbsolutePath());
+//		File rootPath = new File(System.getProperty("user.dir"));
+//		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
+//		File app = new File(appDir, "app-qa (1).apk");
+		//capabilities.setCapability("app", app.getAbsolutePath());
 		
-		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
-		capabilities.setCapability("isHeadless", false);	//emulador invisible
-		capabilities.setCapability("avdReadyTimeout", 300000);
+//		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
+//		capabilities.setCapability("isHeadless", false);	//emulador invisible
+//		capabilities.setCapability("avdReadyTimeout", 300000);
 		
 		capabilities.setCapability("automationName", "UiAutomator2");
-		capabilities.setCapability("deviceName", "emulator-5554");
+		capabilities.setCapability("deviceName", "ZY223TGBXW");
 		
 		capabilities.setCapability("platformName", "Android");
 		//capabilities.setCapability("BROWSER_NAME", "Chrome");
 
-		capabilities.setCapability("appPackage", "cl.bci.app.personas.qa");
-		capabilities.setCapability("appActivity", "cl.bci.app.personas.presentation.splash.SplashActivity");
+		capabilities.setCapability("appPackage", "com.alibaba.aliexpresshd");
+		capabilities.setCapability("appActivity", ".home.ui.MainActivity");
 
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability("newCommandTimeout", 1800); //30min
-		capabilities.setCapability("noReset", false);
+		capabilities.setCapability("noReset", false); //no es si y si es no
 		capabilities.setCapability("autoGrantPermissions", true);
 		capabilities.setCapability("skipServerInstallation", false);
 

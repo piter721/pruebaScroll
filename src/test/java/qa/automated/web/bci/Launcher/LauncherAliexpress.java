@@ -4,11 +4,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import qa.automated.web.bci.Runnings.RunningLoginUFTAppium;
+import qa.automated.web.bci.Runnings.RunningAliexpress;
 
 @RunWith(Suite.class)
-@SuiteClasses({RunningLoginUFTAppium.class})
+@SuiteClasses({RunningAliexpress.class})
 
-public class LauncherLoginApps extends ApplicationLauncherAndroid {
+public class LauncherAliexpress extends ApplicationLauncherAndroid {
 
 }
