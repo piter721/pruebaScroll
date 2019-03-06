@@ -8,19 +8,9 @@ public class Appium {
 	public static AppiumDriverLocalService server;
 	public static PropertiesInit properties;
 	
-	public static void iniciarAppiumServer(int port){
+	public static void iniciarAppiumServer(){
 		properties = new PropertiesInit();
-		String rutaJs = null;
-			if (System.getProperty("os.name").contains("Windows"))
-				rutaJs = properties.RUTAWINDOWS;
-			else if (System.getProperty("os.name").contains("Linux"))
-				rutaJs = properties.RUTALINUX;
-			else if (System.getProperty("os.name").contains("Mac"))
-				rutaJs = properties.RUTAMAC;
-			
-			server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
-					.withAppiumJS(new File(rutaJs))
-					.usingPort(port));
+		server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder());
 				server.start();
 				System.out.println("servidor appium iniciado");
     }
@@ -30,7 +20,7 @@ public class Appium {
 			if (System.getProperty("os.name").contains("Windows")) {
 				Runtime.getRuntime().exec("taskkill /f /im node.exe /im qemu-system-x86_64.exe");
 			}else if (System.getProperty("os.name").contains("Linux")) {
-				Runtime.getRuntime().exec("killall node qemu-system-i38");
+				Runtime.getRuntime().exec("killall node qemu-system-i386");
 			}else if (System.getProperty("os.name").contains("Mac")) {
 				Runtime.getRuntime().exec("killall node qemu-system-i386");
 			}

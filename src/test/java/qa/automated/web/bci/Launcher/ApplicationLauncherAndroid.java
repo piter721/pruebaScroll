@@ -37,10 +37,8 @@ public class ApplicationLauncherAndroid {
 	public static AndroidDriver<AndroidElement> driver;
 	public static WebDriver driverWeb;
 	public static PropertiesInit properties;
-	public static ParamsInit params;
 	public static final String CUR_DIR = System.getProperty("user.dir");
-	private static AppiumDriverLocalService appium;
-	
+
 	// Pagina Mobile
 	public static PageLoginUFTAppium pageLoginUFTAppium;
 	public static PagePagoDeCuentasUFTAppium pagePagoDeCuentasUFTAppium;
@@ -49,22 +47,8 @@ public class ApplicationLauncherAndroid {
 	public static void setUp() throws MalformedURLException {
 		System.out.println(System.getProperty("os.name"));
 		properties = new PropertiesInit();
-		Appium.detenerAppium();
-		Appium.iniciarAppiumServer(4723);
-		
-		String rutaJS = null;
-		
-		if (System.getProperty("os.name").contains("Windows")) {
-			rutaJS = properties.RUTAWINDOWS;
-		}else if (System.getProperty("os.name").contains("Linux")) {
-			rutaJS = properties.RUTALINUX;
-		}else if (System.getProperty("os.name").contains("Mac")) {
-			rutaJS = properties.RUTAMAC;
-		}
-		appium = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
-				.withAppiumJS(new File(rutaJS))
-				.usingPort(4780).withIPAddress("127.0.0.1"));
-		appium.start();
+		//Appium.detenerAppium();
+		//Appium.iniciarAppiumServer();
 
 		try {
 			if (System.getenv("SELENIUM_SERVER_URL") != null
@@ -95,8 +79,7 @@ public class ApplicationLauncherAndroid {
 		System.out.println("************************************************");
 		System.out.println();
 		driver.quit();
-		appium.stop();
-		Appium.detenerAppium(); 
+		//Appium.detenerAppium();
 	}
 
 	public static void setDriver() throws MalformedURLException {
@@ -161,8 +144,6 @@ public class ApplicationLauncherAndroid {
 		capabilities.setCapability("newCommandTimeout", 1800); //30min
 		capabilities.setCapability("noReset", false);
 		capabilities.setCapability("autoGrantPermissions", true);
-		capabilities.setCapability("skipServerInstallation", true);
-
 		return capabilities;
 	}
 }
