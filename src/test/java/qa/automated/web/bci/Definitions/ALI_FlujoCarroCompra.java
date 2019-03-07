@@ -1,16 +1,24 @@
 package qa.automated.web.bci.Definitions;
 
+
+import org.openqa.selenium.interactions.SourceType;
+import static org.junit.Assert.assertTrue;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import qa.automated.web.bci.Launcher.ApplicationLauncherAndroid;
+import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
+
+
 
 public class ALI_FlujoCarroCompra {
 
+	private PageCarroCompraAliexpress pageAli = ApplicationLauncherAndroid.carroCompraAliexpress;
 	@Given("^me posiciono en el menu principal$")
 	public void me_posiciono_en_el_menu_principal() throws Throwable {
-	    ApplicationLauncherAndroid.driver
+	   pageAli.clickSaltar();
 	}
 
 	@When("^hago click en mi cuenta de la barra inferior$")
@@ -46,8 +54,8 @@ public class ALI_FlujoCarroCompra {
 	    throw new PendingException();
 	}
 
-	@When("^ingreso el usuario esteesuncorreodepruebaparaqa@gmail\\.com y pass qa(\\d+)$")
-	public void ingreso_el_usuario_esteesuncorreodepruebaparaqa_gmail_com_y_pass_qa(int arg1) throws Throwable {
+	@When("^ingreso el usuario \"([^\"]*)\" y pass \"([^\"]*)\"$")
+	public void ingreso_el_usuario_y_pass(String usuario, String pass) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
@@ -76,8 +84,8 @@ public class ALI_FlujoCarroCompra {
 	    throw new PendingException();
 	}
 
-	@When("^ingreso el celularxaomi mi mix en el campo de texto en la parte superior$")
-	public void ingreso_el_celularxaomi_mi_mix_en_el_campo_de_texto_en_la_parte_superior() throws Throwable {
+	@When("^ingreso el celular\"([^\"]*)\" en el campo de texto en la parte superior$")
+	public void ingreso_el_celular_en_el_campo_de_texto_en_la_parte_superior(String celular) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
@@ -156,12 +164,6 @@ public class ALI_FlujoCarroCompra {
 
 	@Then("^me selecciona la imagen con el respectivo color$")
 	public void me_selecciona_la_imagen_con_el_respectivo_color() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
-	@When("^selecciono el boton \\+ en la categoria Cantidad$")
-	public void selecciono_el_boton_en_la_categoria_Cantidad() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}

@@ -19,7 +19,7 @@ Feature: Ingresar en aliexpres y gestionar un producto desde mi cuenta
   
   Examples:
   		| usuario | pass |
-  		| esteesuncorreodepruebaparaqa@gmail.com | qa1234 |
+  		| "esteesuncorreodepruebaparaqa@gmail.com" | "qa1234" |
   
   Scenario Outline: Buscar Celular
     Given que me posiciono en el menu principal
@@ -31,7 +31,7 @@ Feature: Ingresar en aliexpres y gestionar un producto desde mi cuenta
 
 	Examples: 
       | celular |
-      | xaomi mi mix |
+      | "xaomi mi mix" |
 
   Scenario: Seleccionar el producto buscado
     Given me posiciono en la ventana de busqueda
