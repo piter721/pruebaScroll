@@ -70,6 +70,9 @@ public class PageCarroCompraAliexpress {
 	
 	//booleanos de validacion por la posicion en la que me encuentro
 	
+	public boolean existebtnSaltar() {
+		return existe(btnSaltar);
+	}
 	public boolean estoyEnPaginaPrincipal() {
 		return existe(btnMiCuenta);
 	}
@@ -85,41 +88,51 @@ public class PageCarroCompraAliexpress {
 	public boolean existebtnBuscar() {
 		return existe(btnBuscar);
 	}
-	public boolean TxtBuscar() {
+	public boolean existeTxtBuscar() {
 		return existe(TxtBuscar);
 	}
-	public boolean LblProducto() {
+	public boolean existeLblProducto() {
 		return existe(LblProducto);
 	}
-	public boolean ImgProducto() {
+	public boolean existeImgProducto() {
 		return existe(ImgProducto);
 	}
-	public boolean btnAñadirAlCarro() {
+	public boolean existebtnAñadirAlCarro() {
 		return existe(btnAñadirAlCarro);
 	}
-	public boolean ImgSeleccionColor() {
+	public boolean existeImgSeleccionColor() {
 		return existe(ImgSeleccionColor);
 	}
-	public boolean BtnIrAlCarroCompra() {
+	public boolean existeBtnIrAlCarroCompra() {
 		return existe(BtnIrAlCarroCompra);
 	}
-	public boolean CbxSeleccionarProducto() {
+	public boolean existeCbxSeleccionarProducto() {
 		return existe(CbxSeleccionarProducto);
 	}
-	public boolean btnEliminar() {
+	public boolean existebtnEliminar() {
 		return existe(btnEliminar);
 	}
-	public boolean btnOpcionesMenuGeneral() {
+	public boolean existebtnOpcionesMenuGeneral() {
 		return existe(btnOpcionesMenuGeneral);
 	}
-	public boolean btnCerrarSesion() {
+	public boolean existebtnCerrarSesion() {
 		return existe(btnCerrarSesion);
+	}
+	public boolean existebtnOpcionesAjustes() {
+		return existe(btnOpcionAjustes);
+	}
+	public boolean existebtnAceptarCierreSesion() {
+		return existe(btnAceptarCierreSesion);
 	}
 	
 	//funciones para ejecutar acciones dentro de la aplicacion
 	
 	public void clickSaltar() {
-		btnSaltar.click();
+		boolean btnsaltar;
+		btnsaltar = existebtnSaltar();
+		if (btnsaltar = true) {
+			btnSaltar.click();
+		}
 	}
 	public void clickMiCuenta() {
 		btnMiCuenta.click();

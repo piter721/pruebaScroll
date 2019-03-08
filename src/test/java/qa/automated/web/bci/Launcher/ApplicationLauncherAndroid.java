@@ -121,12 +121,12 @@ public class ApplicationLauncherAndroid {
 //		File app = new File(appDir, "app-qa (1).apk");
 		//capabilities.setCapability("app", app.getAbsolutePath());
 		
-//		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
+		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
 //		capabilities.setCapability("isHeadless", false);	//emulador invisible
-//		capabilities.setCapability("avdReadyTimeout", 300000);
+		capabilities.setCapability("avdReadyTimeout", 300000);
 		
 		capabilities.setCapability("automationName", "UiAutomator2");
-		capabilities.setCapability("deviceName", "ZY223TGBXW");
+		capabilities.setCapability("deviceName", "emulator-5554");
 		
 		capabilities.setCapability("platformName", "Android");
 		//capabilities.setCapability("BROWSER_NAME", "Chrome");
