@@ -139,7 +139,7 @@ public class ALI_FlujoCarroCompra {
 	    assertTrue(pageAli.existeImgSeleccionColor());
 	}
 
-	@When("^haga click en un paquete que seleccione$")
+	@When("^Selecciono las caracteristecas del producto$")
 	public void haga_click_en_un_paquete_que_seleccione() throws Throwable {
 	    pageAli.clickImagenMaterial();
 	    Thread.sleep(2000);
@@ -177,10 +177,14 @@ public class ALI_FlujoCarroCompra {
 	public void hago_click_en_el_recuadro_en_la_parte_izquierda_del_producto() throws Throwable {
 	    pageAli.clickRecuadroSeleccionadorProducto();
 	    Thread.sleep(4000);
-	    pageAli.clickBorrar();
-	    Thread.sleep(3000);
 	}
 
+	@When("^hago click en la imagen de bote de basura en la parte superior derecha$")
+	public void hago_click_en_la_imagen_de_bote_de_basura_en_la_parte_superior_derecha() throws Throwable {
+		pageAli.clickBorrar();
+	    Thread.sleep(3000);
+	}
+	
 	@Then("^aparece un popup con un mensaje de seguridad de eliminacion$")
 	public void aparece_un_popup_con_un_mensaje_de_seguridad_de_eliminacion() throws Throwable {
 	    assertTrue(pageAli.existebtnEliminar());
@@ -205,16 +209,33 @@ public class ALI_FlujoCarroCompra {
 
 	@Then("^aparece la ventana de busqueda con la descripcion del producto anteriormente seleccionado$")
 	public void aparece_la_ventana_de_busqueda_con_la_descripcion_del_producto_anteriormente_seleccionado() throws Throwable {
-	    assertTrue(pageAli.existebtnAñadirAlCarro());
-	    pageAli.clickMenuOpcionesGenerales();
+	    assertTrue(pageAli.existebtnAñadirAlCarro());  
+	}
+	
+	@When("^hago click en el boton de opciones$")
+	public void hago_click_en_el_boton_de_opciones() throws Throwable {
+		pageAli.clickMenuOpcionesGenerales();
 	    Thread.sleep(5000);
-	    pageAli.clickLNKMiCuenta();
+	}
+	
+	@Then("^me aparece un menu de opciones generales$")
+	public void me_aparece_un_menu_de_opciones_generales() throws Throwable {
+	    assertTrue(pageAli.existelnkMicuenta());
+	}
+
+	@When("^selecciono mi cuenta$")
+	public void selecciono_mi_cuenta() throws Throwable {
+		pageAli.clickLNKMiCuenta();
 	    Thread.sleep(5000);
+	}
+
+	@Then("^aparece en la pagina de mi cuenta$")
+	public void aparece_en_la_pagina_de_mi_cuenta() throws Throwable {
+		assertTrue(pageAli.existebtnOpcionesAjustes());
 	}
 
 	@When("^hago click en ajustes$")
 	public void hago_click_en_ajustes() throws Throwable {
-		assertTrue(pageAli.existebtnOpcionesAjustes());
 		pageAli.clickOpcionAjustes();
 		Thread.sleep(5000);
 	}
@@ -241,7 +262,7 @@ public class ALI_FlujoCarroCompra {
 	    Thread.sleep(3000);
 	}
 
-	@Then("^aparece en el menu principal$")
+	@Then("^aparece en el menu principal con sesion cerrada$")
 	public void aparece_en_el_menu_principal() throws Throwable {
 		assertTrue(pageAli.estoyIniciarSesion());
 	}

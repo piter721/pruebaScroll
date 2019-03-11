@@ -124,6 +124,9 @@ public class PageCarroCompraAliexpress {
 	public boolean existebtnAceptarCierreSesion() {
 		return existe(btnAceptarCierreSesion);
 	}
+	public boolean existelnkMicuenta() {
+		return existe(LnkMiCuenta);
+	}
 	
 	//funciones para ejecutar acciones dentro de la aplicacion
 	

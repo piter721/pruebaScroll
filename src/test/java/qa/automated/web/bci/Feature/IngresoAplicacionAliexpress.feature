@@ -41,15 +41,9 @@ Feature: Ingresar en aliexpres y gestionar un producto desde mi cuenta
 	Scenario: Añadir producto a la cesta
 		Given me posiciono en la ventana de detalles del producto
 		When hago click en el boton agregar a la cesta
-		Then el producto se guardara en la cesta    
-  	And aparece un popup de seleccion de producto
-  	When haga click en un paquete que seleccione
-  	Then me selecciona dicho paquete 
-  	When haga click en una imagen con el color del celular
-  	Then me selecciona la imagen con el respectivo color
-  	When selecciono el boton + en la categoria Cantidad
-  	Then me aumenta la cantidad de celulares que comprare
-  	When hago click en el boton continuar
+		Then aparece un popup de seleccion de producto
+  	When Selecciono las caracteristecas del producto 
+  	And hago click en el boton continuar
   	Then aparece un popup informando que se añadio a la cesta con opciones
   	When hago click  en ir a cesta
   	Then ingreso a la cesta del usuario
@@ -57,17 +51,16 @@ Feature: Ingresar en aliexpres y gestionar un producto desde mi cuenta
   Scenario: Eliminar el producto de la cesta
   	Given me posiciono en la ventana de mi cesta
   	When hago click en el recuadro en la parte izquierda del producto
-  	Then se marca con un victo y se selecciona el producto
-  	When hago click en la imagen de bote de basura en la parte superior derecha 
+  	And hago click en la imagen de bote de basura en la parte superior derecha 
 		Then aparece un popup con un mensaje de seguridad de eliminacion
 		When hago click en eliminar 
 		Then aparece el cesto sin el producto recientemente seleccionado
 		When hago click a la flecha en la parte superior izquierda
 		Then aparece la ventana de busqueda con la descripcion del producto anteriormente seleccionado
-		When hago click a la flecha en la parte superior izquierda
-		Then aparece la ventana de busqueda con el producto anteriormente buscado
-		When hago click a la flecha en la parte superior izquierda
-		Then aparece la pagina principal de busqueda
+		When hago click en el boton de opciones
+		Then me aparece un menu de opciones generales
+		When selecciono mi cuenta
+		Then aparece en la pagina de mi cuenta
 		
 	Scenario: Logout
 		Given me posiciono en el menu principal 
@@ -78,8 +71,7 @@ Feature: Ingresar en aliexpres y gestionar un producto desde mi cuenta
   	When hago click en el boton cerrar sesion
   	Then aparece un popup validando que cierro sesion
   	When hago click en el boton aceptar
-  	Then aparece en el menu principal
-  	And la sesion esta cerrada 
+  	Then aparece en el menu principal con sesion cerrada
 		
 		
 		
