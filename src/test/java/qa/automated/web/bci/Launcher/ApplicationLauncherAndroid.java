@@ -57,7 +57,7 @@ public class ApplicationLauncherAndroid {
 				}
 
 			driver = new AndroidDriver<AndroidElement>(new URL(properties.getURL_APPIUM()), capabilities());
-			driver.manage().timeouts().implicitlyWait(13, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 			// Pages Mobile
 			carroCompraAliexpress = PageFactory.initElements(driver, PageCarroCompraAliexpress.class);
@@ -139,7 +139,6 @@ public class ApplicationLauncherAndroid {
 		capabilities.setCapability("newCommandTimeout", 1800); //30min
 		capabilities.setCapability("noReset", false); //no es si y si es no
 		capabilities.setCapability("autoGrantPermissions", true);
-		capabilities.setCapability("skipServerInstallation", false);
 
 		return capabilities;
 	}

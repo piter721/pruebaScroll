@@ -17,6 +17,8 @@ import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
 public class ALI_FlujoCarroCompra {
 
 	private PageCarroCompraAliexpress pageAli = ApplicationLauncherAndroid.carroCompraAliexpress;
+	
+	
 	@Given("^me posiciono en el menu principal$")
 	public void me_posiciono_en_el_menu_principal() throws Throwable {
 	   pageAli.clickSaltar();
@@ -81,7 +83,9 @@ public class ALI_FlujoCarroCompra {
 	@When("^hago click en el boton de busqueda en el menu de la barra inferior$")
 	public void hago_click_en_el_boton_de_busqueda_en_el_menu_de_la_barra_inferior() throws Throwable {
 		
-		pageAli.clickBotonBuscar();
+		pageAli.BtnIconoPaginaPrincipal();
+	    Thread.sleep(3000);
+	    pageAli.clickBotonBuscar();
 	    Thread.sleep(3000);
 	}
 
@@ -98,7 +102,9 @@ public class ALI_FlujoCarroCompra {
 
 	@Then("^aparece un listado de los resultados por nombre$")
 	public void aparece_un_listado_de_los_resultados_por_nombre() throws Throwable {
-	    assertTrue(pageAli.existeLblProducto());
+	    assertTrue(pageAli.existebtnbuscarProducto());
+	    pageAli.clickBtnBuscarProducto();
+	    Thread.sleep(3000);
 	}
 
 	@Then("^selecciono el primer resultado$")

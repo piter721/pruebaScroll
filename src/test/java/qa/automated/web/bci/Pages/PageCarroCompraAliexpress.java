@@ -9,7 +9,7 @@ import cucumber.api.PendingException;
 public class PageCarroCompraAliexpress {
 	@FindBy(xpath = "//android.view.View[@index='0']")
 	private WebElement btnSaltar;
-	@FindBy(id = "com.alibaba.aliexpresshd:id/icon")
+	@FindBy(id = "com.alibaba.aliexpresshd:id/navigation_my_ae")
 	private WebElement btnMiCuenta;
 	@FindBy(id = "com.alibaba.aliexpresshd:id/tv_un_login")
 	private WebElement TxtIniciarSesion;
@@ -21,11 +21,15 @@ public class PageCarroCompraAliexpress {
 	private WebElement TxtPass;
 	@FindBy(id = "com.alibaba.aliexpresshd:id/rl_ali_sign_in_btn")
 	private WebElement btnIdentificarUsuario;
-	@FindBy(id = "com.alibaba.aliexpresshd:id/icon")
+	@FindBy(id = "com.alibaba.aliexpresshd:id/navigation_home")
+	private WebElement btnIconoInicio;
+	@FindBy(id = "com.alibaba.aliexpresshd:id/rl_search_box")
 	private WebElement btnBuscar;
 	@FindBy(id = "com.alibaba.aliexpresshd:id/abs__search_src_text")
 	private WebElement TxtBuscar;
-	@FindBy(xpath = "//android.widget.TextView[@text='xaomi mi mix 2']")
+	@FindBy(id = "com.alibaba.aliexpresshd:id/abs__search_go_btn")
+	private WebElement btnBuscarProducto;
+	@FindBy(xpath = "//android.widget.TextView[@text='xaomi mi mix']")
 	private WebElement LblProducto;
 	@FindBy(id = "com.alibaba.aliexpresshd:id/riv_productsummary_img")
 	private WebElement ImgProducto;
@@ -94,6 +98,9 @@ public class PageCarroCompraAliexpress {
 	public boolean existeLblProducto() {
 		return existe(LblProducto);
 	}
+	public boolean existebtnbuscarProducto() {
+		return existe(btnBuscarProducto);
+	}
 	public boolean existeImgProducto() {
 		return existe(ImgProducto);
 	}
@@ -125,7 +132,7 @@ public class PageCarroCompraAliexpress {
 		return existe(btnAceptarCierreSesion);
 	}
 	public boolean existelnkMicuenta() {
-		return existe(LnkMiCuenta);
+		return existe(LnkMiCuenta); 
 	}
 	
 	//funciones para ejecutar acciones dentro de la aplicacion
@@ -136,6 +143,7 @@ public class PageCarroCompraAliexpress {
 		if (btnsaltar = true) {
 			btnSaltar.click();
 		}
+		
 	}
 	public void clickMiCuenta() {
 		btnMiCuenta.click();
@@ -155,11 +163,17 @@ public class PageCarroCompraAliexpress {
 	public void clickEnviarDatosUsuario() {
 		btnIdentificarUsuario.click();
 	}
+	public void BtnIconoPaginaPrincipal() {
+		btnIconoInicio.click();
+	}
 	public void clickBotonBuscar() {
 		btnBuscar.click();
 	}
 	public void escribirProducto(String celular) {
 		TxtBuscar.sendKeys(celular);
+	}
+	public void clickBtnBuscarProducto() {
+		btnBuscarProducto.click();
 	}
 	public void clickProducto() {
 		LblProducto.click();

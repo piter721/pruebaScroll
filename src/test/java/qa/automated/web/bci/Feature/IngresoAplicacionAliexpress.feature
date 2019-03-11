@@ -19,7 +19,7 @@ Feature: Ingresar en aliexpres y gestionar un producto desde mi cuenta
   
   Examples:
   		| usuario | pass |
-  		| "esteesuncorreodepruebaparaqa@gmail.com" | "qa1234" |
+  		| "weadeprueba23@gmail.com" | "qa1234" |
   
   Scenario Outline: Buscar Celular
     Given que me posiciono en el menu principal
