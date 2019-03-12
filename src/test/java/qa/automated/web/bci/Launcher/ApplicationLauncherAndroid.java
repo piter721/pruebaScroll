@@ -23,12 +23,14 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import qa.automated.web.bci.Config.Appium;
 import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
+import qa.automated.web.bci.Pages.PageExampleClipboard;
 import qa.automated.web.bci.Properties.PropertiesInit;
+import qa.automated.web.bci.Runnings.RunningTheApp;
 import qa.automated.web.bci.Properties.ParamsInit;
 
 
-//@SuiteClasses({ RunningLoginUFTAppium.class, RunningPagoDeCuentasUFTAppium.class})
-@SuiteClasses({})
+@SuiteClasses({ RunningTheApp.class})
+//@SuiteClasses({})
 public class ApplicationLauncherAndroid {
 	
 	public static AndroidDriver<AndroidElement> driver;
@@ -37,7 +39,8 @@ public class ApplicationLauncherAndroid {
 	public static final String CUR_DIR = System.getProperty("user.dir");
 
 	// Pagina Mobile
-	public static PageCarroCompraAliexpress carroCompraAliexpress;
+	//public static PageCarroCompraAliexpress carroCompraAliexpress;
+	public static PageExampleClipboard ejemploClipboard;
 
 	@BeforeClass
 	public static void setUp() throws MalformedURLException {
@@ -60,7 +63,7 @@ public class ApplicationLauncherAndroid {
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 			// Pages Mobile
-			carroCompraAliexpress = PageFactory.initElements(driver, PageCarroCompraAliexpress.class);
+			ejemploClipboard = PageFactory.initElements(driver, PageExampleClipboard.class);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,10 +119,10 @@ public class ApplicationLauncherAndroid {
 	public static DesiredCapabilities capabilities() {	
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-//		File rootPath = new File(System.getProperty("user.dir"));
-//		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
-//		File app = new File(appDir, "app-qa (1).apk");
-		//capabilities.setCapability("app", app.getAbsolutePath());
+		File rootPath = new File(System.getProperty("user.dir"));
+		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
+		File app = new File(appDir, "TheApp-v1.9.0.apk");
+		capabilities.setCapability("app", app.getAbsolutePath());
 		
 		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
 //		capabilities.setCapability("isHeadless", false);	//emulador invisible
@@ -131,8 +134,8 @@ public class ApplicationLauncherAndroid {
 		capabilities.setCapability("platformName", "Android");
 		//capabilities.setCapability("BROWSER_NAME", "Chrome");
 
-		capabilities.setCapability("appPackage", "com.alibaba.aliexpresshd");
-		capabilities.setCapability("appActivity", ".home.ui.MainActivity");
+		capabilities.setCapability("appPackage", "io.cloudgrey.the_app");
+		capabilities.setCapability("appActivity", "io.cloudgrey.the_app.MainActivity");
 
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
