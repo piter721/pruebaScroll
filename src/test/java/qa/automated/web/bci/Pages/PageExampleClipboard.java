@@ -4,15 +4,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class PageExampleClipboard {
-	@FindBy(xpath = "android.view.ViewGroup[@index='2']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Clipboard Demo']")
 	private WebElement OpcionClipboard;
-	@FindBy(xpath = "android.widget.EditText[@index='0']")
+	@FindBy(xpath = "//android.widget.EditText[@index='0']")
 	private WebElement TxtTextoDePrueba;
-	@FindBy(xpath = "android.widget.TextView[@index='0']")
+	@FindBy(xpath = "//android.widget.TextView[@index='0']")
 	private WebElement BtnSetClipboard;
-	@FindBy(xpath = "android.widget.TextView[@text='Refresh Clipboard Text']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Refresh Clipboard Text']")
 	private WebElement BtnRefreshClipboard;
-	@FindBy(xpath = "android.widget.TextView[@index='1']")// texto de validacion
+	@FindBy(xpath = "//android.widget.TextView[@index='1']")// texto de validacion
 	private WebElement LblResultado;
 	
 	public boolean existe(WebElement we) {

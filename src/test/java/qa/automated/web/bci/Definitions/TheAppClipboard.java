@@ -1,5 +1,6 @@
 package qa.automated.web.bci.Definitions;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import cucumber.api.PendingException;
@@ -46,5 +47,6 @@ public class TheAppClipboard {
 	@Then("^se cambia el texto del clipboard por la palabra ingresada anteriormente$")
 	public void se_cambia_el_texto_del_clipboard_por_la_palabra_ingresada_anteriormente() throws Throwable {
 	    cli.ValidarCambioCorrecto();
+	    assertEquals("a", "s");
 	}
 }

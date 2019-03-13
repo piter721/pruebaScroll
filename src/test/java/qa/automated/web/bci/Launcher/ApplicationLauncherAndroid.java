@@ -22,14 +22,15 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import qa.automated.web.bci.Config.Appium;
-import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
 import qa.automated.web.bci.Pages.PageExampleClipboard;
+import qa.automated.web.bci.Pages.PageList;
 import qa.automated.web.bci.Properties.PropertiesInit;
+import qa.automated.web.bci.Runnings.RunningLista;
 import qa.automated.web.bci.Runnings.RunningTheApp;
 import qa.automated.web.bci.Properties.ParamsInit;
 
 
-@SuiteClasses({ RunningTheApp.class})
+@SuiteClasses({ RunningLista.class})
 //@SuiteClasses({})
 public class ApplicationLauncherAndroid {
 	
@@ -41,6 +42,7 @@ public class ApplicationLauncherAndroid {
 	// Pagina Mobile
 	//public static PageCarroCompraAliexpress carroCompraAliexpress;
 	public static PageExampleClipboard ejemploClipboard;
+	public static PageList EjList;
 
 	@BeforeClass
 	public static void setUp() throws MalformedURLException {
@@ -64,6 +66,7 @@ public class ApplicationLauncherAndroid {
 
 			// Pages Mobile
 			ejemploClipboard = PageFactory.initElements(driver, PageExampleClipboard.class);
+			EjList = PageFactory.initElements(driver, PageList.class);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
