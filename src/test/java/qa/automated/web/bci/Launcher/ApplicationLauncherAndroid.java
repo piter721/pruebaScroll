@@ -23,6 +23,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import qa.automated.web.bci.Config.Appium;
 import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
+import qa.automated.web.bci.Pages.pageScroll;
 import qa.automated.web.bci.Properties.PropertiesInit;
 import qa.automated.web.bci.Properties.ParamsInit;
 
@@ -38,7 +39,7 @@ public class ApplicationLauncherAndroid {
 
 	// Pagina Mobile
 	public static PageCarroCompraAliexpress carroCompraAliexpress;
-
+	public static pageScroll bajarConScrollApp;
 	@BeforeClass
 	public static void setUp() throws MalformedURLException {
 		System.out.println(System.getProperty("os.name"));
@@ -61,7 +62,7 @@ public class ApplicationLauncherAndroid {
 
 			// Pages Mobile
 			carroCompraAliexpress = PageFactory.initElements(driver, PageCarroCompraAliexpress.class);
-		
+			bajarConScrollApp = PageFactory.initElements(driver, pageScroll.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -116,10 +117,10 @@ public class ApplicationLauncherAndroid {
 	public static DesiredCapabilities capabilities() {	
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-//		File rootPath = new File(System.getProperty("user.dir"));
-//		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
-//		File app = new File(appDir, "app-qa (1).apk");
-		//capabilities.setCapability("app", app.getAbsolutePath());
+		File rootPath = new File(System.getProperty("user.dir"));
+		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
+		File app = new File(appDir, "TheApp-v1.9.0.apk");
+		capabilities.setCapability("app", app.getAbsolutePath());
 		
 		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
 //		capabilities.setCapability("isHeadless", false);	//emulador invisible
