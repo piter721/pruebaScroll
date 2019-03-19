@@ -17,12 +17,13 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import qa.automated.web.bci.Config.Appium;
-import qa.automated.web.bci.Pages.PageCarroCompraAliexpress;
 import qa.automated.web.bci.Pages.pageScroll;
 import qa.automated.web.bci.Properties.PropertiesInit;
 import qa.automated.web.bci.Properties.ParamsInit;
@@ -33,12 +34,12 @@ import qa.automated.web.bci.Properties.ParamsInit;
 public class ApplicationLauncherAndroid {
 	
 	public static AndroidDriver<AndroidElement> driver;
+	public static AndroidDriver<MobileElement> driverM;
 	public static WebDriver driverWeb;
 	public static PropertiesInit properties;
 	public static final String CUR_DIR = System.getProperty("user.dir");
 
 	// Pagina Mobile
-	public static PageCarroCompraAliexpress carroCompraAliexpress;
 	public static pageScroll bajarConScrollApp;
 	@BeforeClass
 	public static void setUp() throws MalformedURLException {
@@ -59,9 +60,10 @@ public class ApplicationLauncherAndroid {
 
 			driver = new AndroidDriver<AndroidElement>(new URL(properties.getURL_APPIUM()), capabilities());
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			driverM = new AndroidDriver<MobileElement>(new URL(properties.getURL_APPIUM()), capabilities()); //intento de cambio de drivers 19/03
+			driverM.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 			// Pages Mobile
-			carroCompraAliexpress = PageFactory.initElements(driver, PageCarroCompraAliexpress.class);
 			bajarConScrollApp = PageFactory.initElements(driver, pageScroll.class);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,8 +134,8 @@ public class ApplicationLauncherAndroid {
 		capabilities.setCapability("platformName", "Android");
 		//capabilities.setCapability("BROWSER_NAME", "Chrome");
 
-		capabilities.setCapability("appPackage", "com.alibaba.aliexpresshd");
-		capabilities.setCapability("appActivity", ".home.ui.MainActivity");
+		capabilities.setCapability("appPackage", "io.cloudgrey.the_app");
+		capabilities.setCapability("appActivity", ".MainActivity");
 
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
