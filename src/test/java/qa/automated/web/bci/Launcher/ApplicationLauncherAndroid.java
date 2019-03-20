@@ -60,8 +60,8 @@ public class ApplicationLauncherAndroid {
 
 			driver = new AndroidDriver<AndroidElement>(new URL(properties.getURL_APPIUM()), capabilities());
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			driverM = new AndroidDriver<MobileElement>(new URL(properties.getURL_APPIUM()), capabilities()); //intento de cambio de drivers 19/03
-			driverM.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			//driverM = new AndroidDriver<MobileElement>(new URL(properties.getURL_APPIUM()), capabilities()); //intento de cambio de drivers 19/03
+			//driverM.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 			// Pages Mobile
 			bajarConScrollApp = PageFactory.initElements(driver, pageScroll.class);

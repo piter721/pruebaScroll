@@ -10,6 +10,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.touch.offset.PointOption;
+import qa.automated.web.bci.Launcher.ApplicationLauncherAndroid;
+
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
@@ -24,7 +27,7 @@ public class pageScroll {
 	AppiumDriver<MobileElement> driver;
 	@FindBy(xpath = "//android.widget.TextView[@text='List Demo']")
 	private WebElement ListDemo;
-	@FindBy(xpath = "//android.widget.TextView[@text='Altocumulus']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Cumulonimbus']")
 	private WebElement Altocumulus;
 	@FindBy(xpath = "//android.widget.TextView[@text='Cumulus Mediocris']")
 	private WebElement CumulusMediocris;
@@ -48,6 +51,13 @@ public class pageScroll {
 		ListDemo.click();
 	}
 	public void scrollDown(){
+		
+		Actions actions = new Actions(ApplicationLauncherAndroid.driver);		
+		actions.dragAndDropBy(Altocumulus, 0, 100).build().perform();
+		
+		//TouchAction a2 = new TouchAction(ApplicationLauncherAndroid.driver);
+		//Thread.sleep(4000);
+		//a2.dragAndDropBy(point(Altocumulus, 0, 100)).perform();
 		
 		//Dimension dim = driver.manage().window().getSize();
 		//int height = dim.getHeight();
@@ -86,6 +96,11 @@ public class pageScroll {
 		
 		//TouchAction((MobileDriver) driver).press(startElement).waitAction(Duration.ofMillis(3000)).moveTo(300, 500).release().perform();
 	}
+	private void scroll(int fromX, int fromY, int toX, int toY) {
+		   //TouchAction touchAction = new TouchAction(driver);
+		   //touchAction.tap(PointOption.point(fromX, fromY)).waitAction(1000).moveTo(toX, 
+		   //toY).release().perform();
+		}
 	public void clickStratus() {
 		Stratus.click();
 	}

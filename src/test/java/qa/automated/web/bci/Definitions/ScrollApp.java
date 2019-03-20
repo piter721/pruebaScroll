@@ -47,9 +47,9 @@ public class ScrollApp {
 
 	@Then("^hago un scroll down para ver opciones que estan abajo$")
 	public void hago_un_scroll_down_para_ver_opciones_que_estan_abajo() throws Throwable, InterruptedException, IOException {
-		String textoBuscar = "Stratus";
-	    se.ScrollToElement(PantallaScroll, textoBuscar);
-	    
+		//String textoBuscar = "Stratus"; //para la funcion de scrollElement al igual que el valor PantallaScroll
+	    //se.scrollDown();
+		ps.scrollDown();
 	    Thread.sleep(3000);
 	    ps.ClickListDemo();
 	}
