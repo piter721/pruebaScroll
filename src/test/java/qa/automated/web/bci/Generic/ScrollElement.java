@@ -57,15 +57,15 @@ public class ScrollElement {
 		}
 	 
 	        public WebElement getItemViews() {
-			return driverM.findElement(By.xpath("//android.widget.TextView[@text='Stratus']"));
+			return driverM.findElement(By.id("com.mercadolibre:id/vip_custom_action_button_title"));
 		}
 		
 		public List<WebElement> getItemWebView(){
-			return driverM.findElements(By.xpath("//android.widget.TextView[@text='Altocumulus']"));
+			return driverM.findElements(By.id("com.mercadolibre:id/vip_root"));
 		}
 		
 		public void scrollTillWebView() throws InterruptedException {
-			getItemViews().click();
+			//getItemViews().click();
 			
 			while(getItemWebView().size() == 0) {
 				scrollDown();

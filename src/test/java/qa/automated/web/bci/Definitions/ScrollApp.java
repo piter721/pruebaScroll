@@ -1,9 +1,7 @@
 package qa.automated.web.bci.Definitions;
 
 import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.FindBy;
@@ -47,9 +45,12 @@ public class ScrollApp {
 
 	@Then("^hago un scroll down para ver opciones que estan abajo$")
 	public void hago_un_scroll_down_para_ver_opciones_que_estan_abajo() throws Throwable, InterruptedException, IOException {
-		//String textoBuscar = "Stratus"; //para la funcion de scrollElement al igual que el valor PantallaScroll
-	    //se.scrollDown();
-		ps.scrollDown();
+//		String visibleText = "Stratus"; //para la funcion de scrollElement al igual que el valor PantallaScroll
+	    ps.otroIntento();
+		//se.scrollDown();
+//		AppCompatActivity activity;
+//	    Activity = driver.getcurrentactivity();
+//		String currentActivityName = driver.getCurrentActivity();
 	    Thread.sleep(3000);
 	    ps.ClickListDemo();
 	}
