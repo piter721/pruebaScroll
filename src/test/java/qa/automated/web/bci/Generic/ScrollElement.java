@@ -30,9 +30,9 @@ public class ScrollElement {
 						+ "new UiSelector().text(\""+str+"\"));");
 	}
 
-	 public MobileElement ScrollToElement(MobileElement ele, String str) 
+	 public MobileElement ScrollToElement(WebElement btnComprar, String str) 
 	 {
-		 return ((AndroidElement) ele)
+		 return ((AndroidElement) btnComprar)
 			.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
 					+ "new UiSelector().textContains(\""+str+"\"));");
 	}

@@ -10,10 +10,13 @@ import qa.automated.web.bci.Launcher.ApplicationLauncherAndroid;
 
 public class pageMercadoLibre {
 	private AndroidDriver<MobileElement> driverM = ApplicationLauncherAndroid.driverM;
+	private String texto1, texto2;
 	ScrollElement se = new ScrollElement((AndroidDriver<MobileElement>) driverM);
 	
 	@FindBy(id = "android:id/button2")
 	private WebElement btnMasTarde;
+	@FindBy(id = "com.mercadolibre:id/home_onboarding_action_skip_text_view")
+	private WebElement btnOmitir;
 	@FindBy(id = "com.mercadolibre:id/home_search")
 	private WebElement btnBuscar;
 	@FindBy(id = "com.mercadolibre:id/search_input_edittext")
@@ -29,7 +32,7 @@ public class pageMercadoLibre {
 	@FindBy(id = "com.mercadolibre:id/vip_root")
 	private WebElement ScrollView;
 	@FindBy(id = "com.mercadolibre:id/vip_custom_action_button_title")
-	private MobileElement btnComprar;
+	private WebElement btnComprar;
 	
 	public boolean existe(WebElement we) {
 		try {
@@ -54,15 +57,18 @@ public class pageMercadoLibre {
 		return existe(imgTelevisor);
 	}
 	public boolean existedescripcionProducto() {
-		return existe(lblDescripcionProducto);
+		return existe(lblImagen);
 	}
-	public boolean existe() {
+	public boolean existebtncomprar() {
 		return existe(btnComprar);
 	}
 	
 	
 	public void clickMasTarde() {
 		btnMasTarde.click();
+	}
+	public void clickOmitir() {
+		btnOmitir.click();
 	}
 	public void clickBtnBuscar() {
 		btnBuscar.click();
@@ -72,31 +78,30 @@ public class pageMercadoLibre {
 	}
 	public void clicklbltelevisor() {
 		lblTelevisor.click();
+		gettextlbltele();
 	}
-	public String gettextlbltele() {
-		String text;
-		text = lblTelevisor.getText();
-		return text;
+	public void gettextlbltele() {
+		texto1 = imgTelevisor.getText();
+		System.out.println("************************" + texto1 + "*****************************");
 	}
 	public void clickimgtele() throws InterruptedException {
-		String text1 = gettextlbltele();
 		imgTelevisor.click();
+		gettextlbldescpro();
 		Thread.sleep(3000);
-		String text2 = gettextlbldescpro();
-		if(text1.equals(text2)) {
+		if(texto1.equals(texto2)) {
 			System.out.println("bien hecho, son la misma wea");
 		}
+		else {
+			System.out.println("no son lo mismo");
+		}
 	}
-	public String gettextlbldescpro() {
-		String txt;
-		txt = lblDescripcionProducto.getText();
-		return txt;
+	public void gettextlbldescpro() {
+		texto2 = lblImagen.getText();
+		System.out.println("*********************" + texto2 + "**************************");
 	}
 	public void scrollDown() {
 		String texto = "Comprar";
 		se.ScrollToElement(btnComprar, texto);
 	}
-	public void clickComprar() {
-		btnComprar.click();
-	}
+	
 }

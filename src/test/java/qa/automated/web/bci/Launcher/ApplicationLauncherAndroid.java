@@ -66,7 +66,7 @@ public class ApplicationLauncherAndroid {
 			//driverM.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 			// Pages Mobile
-			bajarConScrollApp = PageFactory.initElements(driver, pageScroll.class);
+//			bajarConScrollApp = PageFactory.initElements(driver, pageScroll.class);
 			pml = PageFactory.initElements(driver, pageMercadoLibre.class);
 		} catch (Exception e) {
 			e.printStackTrace();

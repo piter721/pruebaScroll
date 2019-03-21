@@ -1,6 +1,7 @@
+
 @mercadoLibre
 Feature: Ver producto en mercado libre
-  ingresar a la aplicacion de mercado libre, buscar y seleccionar un televisor,
+  Ingresar a la aplicacion de mercado libre, buscar y seleccionar un televisor,
   ver los detalles de este solo para utilizar nuevamente el scroll down
 
   Scenario: Ingreso a la aplicacion mercado libre
