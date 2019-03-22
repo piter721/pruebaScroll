@@ -1,6 +1,7 @@
 package qa.automated.web.bci.Pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import io.appium.java_client.MobileElement;
@@ -25,9 +26,9 @@ public class pageMercadoLibre {
 	private WebElement lblTelevisor;
 	@FindBy(id = "com.mercadolibre:id/search_cell_image_view")
 	private WebElement imgTelevisor;
-	@FindBy(id = "com.mercadolibre:id/search_cell_title_text_view")
+	@FindBy(id = "com.mercadolibre:id/search_cell_title_text_view") //descripcion de la primera imagen
 	private WebElement lblDescripcionProducto;
-	@FindBy(id = "com.mercadolibre:id/vip_shortDescription_itemTitle")
+	@FindBy(id = "com.mercadolibre:id/vip_shortDescription_itemTitle")//descripcion de la segunda imagen
 	private WebElement lblImagen;
 	@FindBy(id = "com.mercadolibre:id/vip_root")
 	private WebElement ScrollView;
@@ -81,27 +82,36 @@ public class pageMercadoLibre {
 		gettextlbltele();
 	}
 	public void gettextlbltele() {
-		texto1 = imgTelevisor.getText();
+		texto1 = lblDescripcionProducto.getText();
+		System.out.println("**************LA DESCRIPCION DE LA PRIMERA IMAGEN******************");
 		System.out.println("************************" + texto1 + "*****************************");
+		System.out.println("************************FIN DEL PRIMERO****************************");
 	}
 	public void clickimgtele() throws InterruptedException {
 		imgTelevisor.click();
 		gettextlbldescpro();
 		Thread.sleep(3000);
-		if(texto1.equals(texto2)) {
-			System.out.println("bien hecho, son la misma wea");
+		Compare(texto1, texto2);
+	}
+	public void gettextlbldescpro() {
+		texto2 = lblImagen.getText();
+		System.out.println("**************LA DESCRIPCION DE LA SEGUNDA IMAGEN******************");
+		System.out.println("************************" + texto2 + "*****************************");
+		System.out.println("************************FIN DEL SEGUNDA****************************");
+	}
+	public void Compare(String t1, String t2) {
+		if(t1.equals(t2)) {
+			System.out.println("*************************RESULTADO*****************************");
+			System.out.println("************************Validacion exitosa*****************************");
+			System.out.println("************************FIN DEL PRIMERO****************************");
 		}
 		else {
 			System.out.println("no son lo mismo");
 		}
 	}
-	public void gettextlbldescpro() {
-		texto2 = lblImagen.getText();
-		System.out.println("*********************" + texto2 + "**************************");
-	}
 	public void scrollDown() {
-		String texto = "Comprar";
-		se.ScrollToElement(btnComprar, texto);
+		Actions actions = new Actions(ApplicationLauncherAndroid.driver);		
+		actions.dragAndDropBy(ApplicationLauncherAndroid.pml.lblImagen, 0, 100).build().perform();
 	}
 	
 }
