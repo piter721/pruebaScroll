@@ -26,6 +26,7 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import qa.automated.web.bci.Config.Appium;
 import qa.automated.web.bci.Pages.pageMercadoLibre;
 import qa.automated.web.bci.Pages.pageScroll;
+import qa.automated.web.bci.Pages.pageTbk;
 import qa.automated.web.bci.Properties.PropertiesInit;
 import qa.automated.web.bci.Properties.ParamsInit;
 
@@ -43,6 +44,7 @@ public class ApplicationLauncherAndroid {
 	// Pagina Mobile
 	public static pageScroll bajarConScrollApp;
 	public static pageMercadoLibre pml;
+	public static pageTbk tbk;
 	@BeforeClass
 	public static void setUp() throws MalformedURLException {
 		System.out.println(System.getProperty("os.name"));
@@ -68,6 +70,7 @@ public class ApplicationLauncherAndroid {
 			// Pages Mobile
 //			bajarConScrollApp = PageFactory.initElements(driver, pageScroll.class);
 			pml = PageFactory.initElements(driver, pageMercadoLibre.class);
+			tbk = PageFactory.initElements(driver, pageTbk.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -122,10 +125,10 @@ public class ApplicationLauncherAndroid {
 	public static DesiredCapabilities capabilities() {	
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-//		File rootPath = new File(System.getProperty("user.dir"));
-//		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
-//		File app = new File(appDir, "TheApp-v1.9.0.apk");
-//		capabilities.setCapability("app", app.getAbsolutePath());
+		File rootPath = new File(System.getProperty("user.dir"));
+		File appDir = new File(rootPath, "/src/test/java/qa/automated/web/bci/apk");
+		File app = new File(appDir, "tbkpay-con-dexguard.apk");
+		capabilities.setCapability("app", app.getAbsolutePath());
 		
 		capabilities.setCapability("avd", "nexus_s");	//lanza emulador
 //		capabilities.setCapability("isHeadless", false);	//emulador invisible
@@ -137,8 +140,8 @@ public class ApplicationLauncherAndroid {
 		capabilities.setCapability("platformName", "Android");
 		//capabilities.setCapability("BROWSER_NAME", "Chrome");
 
-		capabilities.setCapability("appPackage", "com.mercadolibre");
-		capabilities.setCapability("appActivity", ".activities.SplashActivity");
+		capabilities.setCapability("appPackage", "cl.transbank.mobiletomobile");
+		capabilities.setCapability("appActivity", ".MainActivity");
 
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);

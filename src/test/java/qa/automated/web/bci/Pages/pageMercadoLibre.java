@@ -1,13 +1,34 @@
 package qa.automated.web.bci.Pages;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
+//import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+//import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import qa.automated.web.bci.Generic.ScrollElement;
 import qa.automated.web.bci.Launcher.ApplicationLauncherAndroid;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import java.time.Duration;
+
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.Dimension;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
+
 
 public class pageMercadoLibre {
 	private AndroidDriver<MobileElement> driverM = ApplicationLauncherAndroid.driverM;
@@ -30,11 +51,16 @@ public class pageMercadoLibre {
 	private WebElement lblDescripcionProducto;
 	@FindBy(id = "com.mercadolibre:id/vip_shortDescription_itemTitle")//descripcion de la segunda imagen
 	private WebElement lblImagen;
-	@FindBy(id = "com.mercadolibre:id/vip_root")
+	@FindBy(id = "com.mercadolibre:id/vip_root")// Scroll View, pantalla completa del scroll
 	private WebElement ScrollView;
 	@FindBy(id = "com.mercadolibre:id/vip_custom_action_button_title")
 	private WebElement btnComprar;
-	
+	@FindBy(id = "com.mercadolibre:id/vip_action_bar_menu_action_bookmark")
+	private WebElement elementoFinal;
+	@FindBy(xpath = "android.widget.TextView[@text='$ 129.990']") //punto de inicio de swipe o scroll
+	private WebElement precio;
+	@FindBy(id = "com.mercadolibre:id/vip_shortDescription_itemTitle")//descripcion de la segunda imagen
+	private WebElement descripcion2;
 	public boolean existe(WebElement we) {
 		try {
 			return we.isDisplayed();
@@ -65,8 +91,22 @@ public class pageMercadoLibre {
 	}
 	
 	
-	public void clickMasTarde() {
-		btnMasTarde.click();
+	public void clickMasTarde() throws Throwable{
+		boolean btnmastarde;
+		for (int i = 0; i > 10;i++) {
+			btnmastarde = existepopup();
+	    	if(btnmastarde = true) {
+	    		btnMasTarde.click();
+	    		Thread.sleep(1000);
+		    	i = i + 1;
+	    	}
+	    	else {
+	    		System.out.println("pasa de largo");
+	    		Thread.sleep(1000);
+		    	i = i + 1;
+	    	}
+	    	
+		}
 	}
 	public void clickOmitir() {
 		btnOmitir.click();
@@ -110,8 +150,38 @@ public class pageMercadoLibre {
 		}
 	}
 	public void scrollDown() {
-		Actions actions = new Actions(ApplicationLauncherAndroid.driver);		
-		actions.dragAndDropBy(ApplicationLauncherAndroid.pml.lblImagen, 0, 100).build().perform();
+		AndroidElement ini, fin;
+		ini = (AndroidElement) precio;
+		fin = (AndroidElement) descripcion2;
+		int startX = ini.getLocation().getX() + (ini.getSize().getWidth() / 2);
+        int startY = ini.getLocation().getY() + (ini.getSize().getHeight() / 2);
+
+        int endX = fin.getLocation().getX() + (fin.getSize().getWidth() / 2);
+        int endY = fin.getLocation().getY() + (fin.getSize().getHeight() / 2);
+
+        new TouchAction(ApplicationLauncherAndroid.driver)
+                .press(point(startX,startY))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(endX, endY))
+                .release().perform();
+//		este es el codigo para swipe left - right
+//		AndroidElement gallery = ApplicationLauncherAndroid.driver.findElementById("com.mercadolibre:id/vip_root");
+//        List<MobileElement> images = gallery
+//                .findElementsByClassName("android.widget.ScrollView");
+//        int originalImageCount = images.size();
+//        Point location = gallery.getLocation();
+//        Point center = gallery.getCenter();
+//
+//        TouchAction swipe = new TouchAction(ApplicationLauncherAndroid.driver)
+//                .press(element(images.get(0),10, center.y - location.y))
+//                .waitAction(waitOptions(Duration.ofMillis(3000)))
+//                .moveTo(element(gallery,40,center.y - location.y))
+//                .release();
+//        swipe.perform();
+		
+		
+//		Actions actions = new Actions(ApplicationLauncherAndroid.driverWeb);		
+//		actions.dragAndDropBy(ApplicationLauncherAndroid.pml.lblImagen, 0, 100).build().perform();
 	}
 	
 }

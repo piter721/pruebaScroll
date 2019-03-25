@@ -22,14 +22,6 @@ public class MercadoLibre {
 	public void cierro_el_popup_y_compruebo_de_que_no_haya_uno_sobre_otro() throws Throwable {
 	    boolean btnmastarde;
 		pml.clickMasTarde();
-//		Thread.sleep(3000);
-//	    btnmastarde = pml.existepopup();
-//	    if(btnmastarde = true) {
-//	    	pml.clickMasTarde();
-//	    }
-//	    else {
-//	    	System.out.println("pasa de largo");
-//	    }
 	    Thread.sleep(3000);
 	    pml.clickOmitir();
 	}
